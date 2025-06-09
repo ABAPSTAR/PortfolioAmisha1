@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amisha Kumari's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+       body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    z-index: -1;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.75); /* darker for better contrast */
+    padding: 25px 20px;
+    text-align: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px; /* slightly bigger */
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+header .contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px; /* more breathing space */
+}
+
+header .contact-info a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header .contact-info a:hover {
+    color: #f9d342;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.15); /* slightly more opaque */
+    padding: 12px 25px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    max-width: 700px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px; /* larger nav font */
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #f9d342;
+    color: #333;
+    transform: scale(1.12);
+}
+
+section {
+    padding: 50px 30px;
+    max-width: 1000px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.85); /* more opaque for readability */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    color: #222;
+    text-align: left;
+}
+
+section h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #1a365d; /* deeper blue */
+    font-weight: 700;
+    border-bottom: 3px solid #f9d342;
+    padding-bottom: 8px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skills ul, .achievements ul {
+    padding-left: 20px;
+}
+
+.skills ul li, .achievements ul li {
+    font-size: 18px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 0;
+}
+
+.skill-list .skill {
+    background: #f9d342;
+    color: #333;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: default;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skill-list .skill:hover {
+    background-color: #ffbf00;
+    transform: scale(1.1);
+}
+
+.experience {
+    display: block;
+}
+
+.experience .container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    text-align: left;
+}
+
+.experience .company {
+    font-size: 26px;
+    font-weight: 700;
+    color: #004085;
+    margin-bottom: 5px;
+}
+
+.experience .dates {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.experience p, .experience ul {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.experience ul {
+    padding-left: 20px;
+}
+
+.projects .project {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.projects .project:hover {
+    transform: translateY(-8px);
+}
+
+.projects .project h3 {
+    font-size: 26px;
+    color: #004085;
+    margin-bottom: 15px;
+}
+
+.projects .project p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.projects .project .details {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.projects .project .skills {
+    margin-top: 15px;
+}
+
+.projects .project .skills .skill {
+    background: #f9d342;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: default;
+}
+
+.projects .project .skills .skill:hover {
+    background-color: #ffbf00;
+    transform: scale(1.1);
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+    box-shadow: 0 -5px 12px rgba(0, 0, 0, 0.4);
+    font-weight: 600;
+}
+
+.contact-form {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin: 12px 0 6px;
+    color: #333;
+    font-weight: 600;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 24px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.contact-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+.audio-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 20px;
+}
+
+.audio-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 10px 15px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+
+    section {
+        padding: 35px 20px;
+        margin: 20px 15px;
+    }
+
+    section h2 {
+        font-size: 26px;
+    }
+
+    .skill-list {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .skills ul li, .achievements ul li {
+        font-size: 16px;
+    }
+
+    .experience .container {
+        padding: 20px;
+    }
+
+    .experience .company {
+        font-size: 22px;
+    }
+
+    .projects .project h3 {
+        font-size: 22px;
+    }
+
+    .projects .project p, .projects .project .details {
+        font-size: 15px;
+    }
+
+    .projects .project .skills .skill {
+        font-size: 12px;
+        padding: 5px 10px;
+        margin-right: 8px;
+        margin-bottom: 6px;
+    }
+
+    .contact-form input, .contact-form textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .contact-form button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    .github-link {
+    font-size: 18px;
+    color: #007BFF;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+}
+
+.github-link:hover {
+    color: #0056b3;
+    border-color: #007BFF;
+}
+}
+
+        
+    </style>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<!-- Include SweetAlert2 CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  (function () {
+    emailjs.init("hyarZYEFODSFBEbw3"); // Your EmailJS Public Key
+  })();
+
+  $(document).ready(function () {
+    $('nav ul li a').on('click', function (event) {
+      event.preventDefault();
+      var target = $(this).attr('href');
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 1000);
+    });
+
+    $('#contact-form').on('submit', function (event) {
+      event.preventDefault();
+
+      // Send the form via EmailJS
+      emailjs.sendForm('service_etxp9u6', 'template_xpk9zi6', this)
+        .then(function () {
+          // Show a success SweetAlert
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: '✅ Your message was sent successfully.',
+            confirmButtonColor: '#4CAF50',
+            timer: 3000
+          });
+          $('#contact-form')[0].reset();
+        }, function (error) {
+          console.error('❌ Failed:', error);
+          // Show an error SweetAlert
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: '⚠️ Failed to send message. Please try again later.',
+            confirmButtonColor: '#d33'
+          });
+        });
+    });
+  });
+</script>
+
+
+   <body>
+    <header>
+        <h1>Amisha Kumari</h1>
+        <div class="contact-info">
+            <span>Bangalore, India 560066 | </span>
+            <a href="tel:+917368062359"><i class="fas fa-phone"></i> 7368062359</a> |
+            <a href="mailto:amishakumari640@gmail.com"><i class="far fa-envelope"></i> amishakumari640@gmail.com</a> |
+            <a href="https://www.linkedin.com/in/amisha-kumari-1baa15249" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="Amisha Kumari_Resume (2).pdf" download class="resume-button"><i class="fas fa-download"></i> Download Resume</a>
+            <a href="https://github.com/ABAPSTAR" target="_blank" rel="noopener noreferrer" class="github-link">
+  &#x1F5C3; GitHub Profile
+</a>
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="motivation" onmouseover="this.style.display = 'none';">
+        <p>Stay curious, keep learning, and never stop growing.</p>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Summary</h2>
+            <p>Dynamic and results-driven Technical Consultant with expertise in SAP BTP, HANA, ABAP, and SAPUI5. Passionate about delivering innovative, cloud-based solutions that enhance operational efficiency and drive business transformation.</p>
+        </div>
+    </section>
+
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Key Skills</h2>
+            <ul>
+                <li><strong>Frontend Development:</strong> SAPUI5, Fiori Elements, JavaScript, XML, HTML, CSS</li>
+                <li><strong>Backend Development & Integration:</strong> Node.js, ABAP, OData Services, CDS Views, Core Data Services</li>
+                <li><strong>SAP Technologies:</strong>
+                    <ul>
+                        <li>SAP BTP (Business Technology Platform)</li>
+                        <li>SAP HANA (native and XS advanced)</li>
+                        <li>SAP Conversational AI (chatbot development)</li>
+                        <li>SAP Analytics Cloud (SAC)</li>
+                        <li>CAP (Cloud Application Programming Model)</li>
+                    </ul>
+                </li>
+                <li><strong>Tools & Automation:</strong> Selenium, Regex, Debugging, Automation Scripting</li>
+                <li><strong>Full-Stack Development:</strong> Built end-to-end applications with Machine Learning model integration</li>
+                <li><strong>Frameworks & Libraries:</strong> Spring Boot, ExtJS</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2>Professional Experience</h2>
+
+            <div class="company">
+                GyanSys Infotech — Bangalore, India
+            </div>
+            <div class="dates">
+                February 2024 – Present
+            </div>
+            <p><strong>Technical Consultant</strong></p>
+            <ul>
+                <li>Developed scalable, cloud-based applications leveraging SAP BTP, integrating key services for enhanced business processes.</li>
+                <li>Optimized real-time data processing using SAP HANA, delivering high-performance analytics solutions.</li>
+                <li>Created and deployed backend services with ABAP on Cloud & RAP, following SAP's clean core principles for long-term scalability.</li>
+                <li>Designed responsive front-end applications using SAPUI5 and Fiori Elements, ensuring optimal user experience.</li>
+            </ul>
+            <p><strong>Client Engagements:</strong></p>
+            <ul>
+                <li>Sumitomo Pharma: Enabled digital transformation with custom SAP Fiori applications and backend services.</li>
+                <li>Packaging Food Group: Delivered SAP solutions that streamlined manufacturing and logistics workflows.</li>
+                <li>Foxconn: Developed scalable applications to drive operational efficiency and support data-driven decision-making.</li>
+            </ul>
+
+            <div class="company">
+                HighRadius Corporation — Bhubaneswar, India
+            </div>
+            <div class="dates">
+                May 2023 – November 2025
+            </div>
+            <p><strong>Java Developer Intern</strong></p>
+            <ul>
+                <li>Developed scalable backend logic using Core Java and Spring Boot to improve application performance.</li>
+                <li>Created RESTful APIs and microservices, enhancing modularity and flexibility in the application architecture.</li>
+                <li>Led automation efforts with Selenium and Regex, improving testing efficiency and coverage.</li>
+                <li>Developed a full-stack machine learning application, integrating ML models to provide actionable business insights.</li>
+                <li>Optimized application code, improving the reliability and maintainability of existing systems.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <h2>Education & Achievements</h2>
+            <p><strong>Kalinga Institute of Technology — Bhubaneswar, India</strong></p>
+            <p>Bachelor of Technology — Computer and Information Sciences | August 2024</p>
+            <ul>
+                <li>🥈 Vice Chancellor's Silver Medal Winner – Awarded for outstanding academic performance.</li>
+                <li>💡 Hackathon Participant & Innovator – Demonstrated creativity and problem-solving in competitive hackathon settings.</li>
+                <li>📚 CGPA: 9.6 / 10 – Consistently maintained high academic standards.</li>
+            </ul>
+
+            <h3>Certifications & Trainings</h3>
+            <ul>
+                <li>SAP Certified Development Associate - SAP Fiori Application</li>
+                <li>Java Developer Certification</li>
+                <li>Machine Learning & AI (Coursera)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>B2B FINTECH FULL STACK WEBSITE</h3>
+                <p class="details">Developed a full-stack website for B2B fintech transactions.</p>
+                <div class="skills">
+                    <span class="skill">HTML & CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Node.js</span>
+                    <span class="skill">Express.js</span>
+                    <span class="skill">MongoDB</span>
+                </div>
+            </div>
+            <div class="project">
+                <h3>INTERACTIVE PORTFOLIO</h3>
+                <p class="details">Created an interactive portfolio website showcasing skills and achievements.</p>
+                <div class="skills">
+                    <span class="skill">HTML & CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">jQuery</span>
+                </div>
+            </div>
+            <div class="project">
+                <h3>RAP APPLICATION</h3>
+                <p class="details">Developed a RAP (Remote Application Programming) application for distributed systems.</p>
+                <div class="skills">
+                    <span class="skill">SAP</span>
+                    <span class="skill">ABAP</span>
+                    <span class="skill">OData</span>
+                    <span class="skill">BTP</span>
+                </div>
+            </div>
+            <div class="project">
+                <h3>SALES PREDICTOR</h3>
+                <p class="details">Implemented a sales predictor using machine learning algorithms.</p>
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">Machine Learning</span>
+                    <span class="skill">Scikit-learn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form class="contact-form" id="contact-form">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="from_name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="from_email" required>
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Send</button>
+</form>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Amisha Kumari. All rights reserved.</p>
+    </footer>
+
+
+  
+
+    <audio id="audio-click" src="bensound-north.mp3"></audio>
+    <div class="audio-button" onclick="toggleSound();">Sound On</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function playClickSound() {
+            var audio = document.getElementById('audio-click');
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+        function toggleSound() {
+            var audioButton = document.querySelector('.audio-button');
+            var audio = document.getElementById('audio-click');
+            if (audio.muted) {
+                audio.muted = false;
+                audioButton.textContent = 'Sound On';
+            } else {
+                audio.muted = true;
+                audioButton.textContent = 'Sound Off';
+            }
+        }
+
+    
+    </script>
+</body>
+</html>
